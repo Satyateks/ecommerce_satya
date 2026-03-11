@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/cart_screen.dart';
 import '../screens/product_detail_screen.dart';
@@ -16,15 +17,11 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppConstants.appName,
       theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        scaffoldBackgroundColor: const Color(0xffF5F7FB),
         useMaterial3: true,
-        scaffoldBackgroundColor: AppColors.background,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
-        ),
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+        appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0),
         cardTheme: CardThemeData(
           color: AppColors.cardBackground,
           elevation: 1,
@@ -35,18 +32,9 @@ class App extends StatelessWidget {
       ),
       initialRoute: AppRoutes.productList,
       getPages: [
-        GetPage(
-          name: AppRoutes.productList,
-          page: () => const ProductListScreen(),
-        ),
-        GetPage(
-          name: AppRoutes.productDetail,
-          page: () => const ProductDetailScreen(),
-        ),
-        GetPage(
-          name: AppRoutes.cart,
-          page: () => const CartScreen(),
-        ),
+        GetPage(name: AppRoutes.productList, page: () => const ProductListScreen()),
+        GetPage(name: AppRoutes.productDetail, page: () => const ProductDetailScreen()),
+        GetPage(name: AppRoutes.cart, page: () => const CartScreen()),
       ],
     );
   }

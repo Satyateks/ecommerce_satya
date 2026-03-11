@@ -1,6 +1,9 @@
 # ecommerce_satya
 
-A new Flutter project.
+This is a simple e-commerce mobile application built using Flutter.
+The main goal of this project is to demonstrate how to fetch product data from an API, display it in a mobile UI, and allow users to interact with it through features like viewing product details and adding items to a cart.
+
+Users can browse products, check detailed information about each product, add them to the cart, and go through a basic checkout flow.
 
 ## Getting Started
 
@@ -17,12 +20,6 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-
-
-# Mini E-Commerce Flutter App
-
-A simple e-commerce mobile application built with **Flutter**.
-The app fetches products from a public API, allows users to view product details, add items to a cart, and perform a basic checkout flow.
 
 ---
 
@@ -84,9 +81,9 @@ lib
  │    └── cart_item_model.dart
  ├── services
  │    └── product_service.dart
- ├── providers
- │    ├── product_provider.dart
- │    └── cart_provider.dart
+ ├── controllers
+ │    ├── cart_controller.dart
+ │    └── product_controller.dart
  ├── screens
  │    ├── product_list_screen.dart
  │    ├── product_detail_screen.dart
@@ -143,7 +140,7 @@ flutter run
 The application follows a **clean and modular architecture**:
 
 * **Services** → Handles API communication
-* **Controllers (Providers)** → Manages application state using GetX
+* **Controllers (Controller)** → Manages application state using GetX
 * **Models** → Represents structured data from the API
 * **Screens** → UI pages of the application
 * **Widgets** → Reusable UI components
