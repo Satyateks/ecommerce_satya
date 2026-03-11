@@ -1,3 +1,4 @@
+
 import 'package:get/get.dart';
 
 import '../models/product_model.dart';
@@ -22,6 +23,7 @@ class ProductController extends GetxController {
     try {
       isLoading.value = true;
       errorMessage.value = '';
+      // debugPrint('fetchProducts calling start......');
       final products = await _productService.fetchProducts();
       productList.assignAll(products);
     } catch (e) {

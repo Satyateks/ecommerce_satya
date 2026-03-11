@@ -1,3 +1,4 @@
+import 'package:ecommerce_satya/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,18 +27,20 @@ class CustomButton extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradientColors ??
-              const [
-                Color(0xff58D24B),
-                Color(0xff19C8AA),
-                Color(0xff32D35E),
-              ],
-        ),
+        color: AppColors.primary,
+        // gradient: LinearGradient(
+        //   colors: gradientColors ??
+        //       const [
+        //         Color(0xff58D24B),
+        //         Color(0xff19C8AA),
+        //         Color(0xff32D35E),
+        //       ],
+        // ),
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xff22C76A).withOpacity(0.28),
+            color: const Color(0xFF2196F3).withOpacity(0.28),
+            // color: const Color(0xff22C76A).withOpacity(0.28),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),

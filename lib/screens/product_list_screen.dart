@@ -1,4 +1,5 @@
 import 'package:ecommerce_satya/screens/comingSoon_screen.dart';
+import 'package:ecommerce_satya/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,13 +27,14 @@ class ProductListScreen extends StatelessWidget {
       appBar: _buildAppBar(cartController),
       body: Obx(() {
         if (productController.isLoading.value) {
+          // return LoadingWidget(message: 'Product List Loading...',);
           return _buildShimmerLoading();
         }
     
         if (productController.errorMessage.isNotEmpty) {
           return ErrorView(
             message: productController.errorMessage.value,
-            onRetry: productController.fetchProducts,
+            onRetry: () => productController.fetchProducts(),
           );
         }
     
@@ -191,13 +193,52 @@ class _EmptyProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Center(
-      child: Text(
-        "No products available",
-        style: GoogleFonts.passeroOne(
-          fontSize: 21,
-          fontWeight: FontWeight.w500,
-          color: Colors.grey,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * .12),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 90,
+              width: 90,
+              decoration: BoxDecoration(
+                color: Colors.grey.withOpacity(.08),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                size: 42,
+                color: Colors.grey,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+            Text(
+              "No Products Found",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.passeroOne(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xff333333),
+              ),
+            ),
+
+            const SizedBox(height: 6),
+
+            /// Subtitle
+            Text(
+              "We couldn't find any products right now.\nPlease check again later.",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                height: 1.4,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ],
         ),
       ),
     );

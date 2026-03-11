@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../models/product_model.dart';
 import '../utils/constants.dart';
@@ -14,8 +15,11 @@ class ProductService {
 
   Future<List<ProductModel>> fetchProducts() async {
     try {
+        debugPrint('.........fetchProducts API calling.........');
       final response = await _dio.get(AppConstants.productsEndpoint);
+        debugPrint('response .........$response');
       if (response.statusCode == 200) {
+        debugPrint('.........${response.data}');
         final List data = response.data as List;
         return data.map((json) => ProductModel.fromJson(json)).toList();
       } else {

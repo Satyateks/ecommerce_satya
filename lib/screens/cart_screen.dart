@@ -596,7 +596,7 @@ class _ModernEmptyCartView extends StatelessWidget {
               child: const Icon(
                 Icons.shopping_bag_outlined,
                 size: 52,
-                color: Color(0xff18B86E),
+                color: Color(0xFF2196F3),
               ),
             ),
             const SizedBox(height: 18),

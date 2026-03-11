@@ -150,6 +150,16 @@ class CartItemTile extends StatelessWidget {
                       ],
                     ),
 
+                    const SizedBox(height: 4),
+                    Text(
+                      'Total: ₹ ${(unitPrice * quantity).toStringAsFixed(0)}',
+                      style: GoogleFonts.poppins(
+                        fontSize: screenWidth * 0.035,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary,
+                      ),
+                    ),
+
                     const SizedBox(height: 8),
 
                     /// Quantity Stepper
@@ -170,7 +180,7 @@ class CartItemTile extends StatelessWidget {
                               onTap: () {cartController.decreaseQuantity(product.id ?? 0);
                                 // cartController.removeFromCart(product.id ?? 0);
                               },
-                              child: const Icon(Icons.delete_outline_rounded),
+                              child: Icon(quantity == 1 ? Icons.delete_outline_rounded : Icons.remove_rounded),
                             ),
                           ),
                         //  IconButton(

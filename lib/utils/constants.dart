@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppConstants {
-  static const String appName = 'Mini E-Commerce App';
+  static const String appName = 'Mini E-Commerce';
   static const String baseUrl = 'https://fakestoreapi.com';
   static const String productsEndpoint = '/products';
 

@@ -5,7 +5,7 @@ class LoadingWidget extends StatelessWidget {
 
   const LoadingWidget({
     super.key,
-    this.message,
+    this.message = "Loading...",
   });
 
   @override
