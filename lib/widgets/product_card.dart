@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../app/routes.dart';
 import '../models/product_model.dart';
 import '../utils/constants.dart';
+import 'loading_widget.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -16,33 +17,48 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(AppConstants.cardRadius),
+      borderRadius: BorderRadius.circular(AppConstants.cardRadius(context)),
       onTap: () {
         Get.toNamed(
           AppRoutes.productDetail,
           arguments: product,
         );
       },
-      child: Card(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppConstants.cardRadius(context)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
+          border: Border.all(
+            color: Colors.grey.shade200,
+          ),
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(11),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
+            Expanded(
                 child: Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(7),
                     child: Image.network(
                       product.image ?? '',
-                      height: AppConstants.imageHeight,
+                      height: AppConstants.imageHeight(context),
                       width: double.infinity,
                       fit: BoxFit.contain,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) { return child; }
+                        return const Center(child: LoadingWidget());
+                      },
                       errorBuilder: (context, error, stackTrace) {
-                        return const Icon(
-                          Icons.broken_image_outlined,
-                          size: 50,
-                        );
+                        return const Icon(Icons.broken_image_outlined, size: 50);
                       },
                     ),
                   ),
@@ -67,6 +83,7 @@ class ProductCard extends StatelessWidget {
                 '₹ ${product.price?.toStringAsFixed(2) ?? '0.00'}',
                 style: AppTextStyles.priceText,
               ),
+              const SizedBox(height: 8),
             ],
           ),
         ),
@@ -74,3 +91,5 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+

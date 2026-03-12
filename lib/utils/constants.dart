@@ -5,9 +5,18 @@ class AppConstants {
   static const String baseUrl = 'https://fakestoreapi.com';
   static const String productsEndpoint = '/products';
 
-  static const double screenPadding = 16.0;
-  static const double cardRadius = 16.0;
-  static const double imageHeight = 140.0;
+  static double screenPadding(BuildContext context) {
+    return MediaQuery.of(context).size.width * 0.04;
+  }
+
+  static double cardRadius(BuildContext context) {
+    return MediaQuery.of(context).size.width * 0.02;
+  }
+
+  static double imageHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height * 0.18;
+  }
+
   static const Duration animationDuration = Duration(milliseconds: 250);
 }
 

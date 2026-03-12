@@ -43,13 +43,9 @@ class ProductListScreen extends StatelessWidget {
         }
     
         return GridView.builder(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 14,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
           itemCount: productController.productList.length,
-          gridDelegate:
-              const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 16,
             crossAxisSpacing: 14,
@@ -155,17 +151,13 @@ class ProductListScreen extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.shopping_bag_outlined),
-                onPressed: () {
-                  Get.toNamed(AppRoutes.cart);
-                },
-              ),
+                onPressed: ()=> Get.toNamed(AppRoutes.cart)),
               if (cartController.totalItems > 0)
                 Positioned(
                   right: 10,
                   top: 10,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 6, vertical: 2),
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                     decoration: BoxDecoration(
                       color: const Color(0xff15B86A),
                       borderRadius: BorderRadius.circular(20),

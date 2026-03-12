@@ -20,8 +20,31 @@ class ProductDetailScreen extends StatelessWidget {
     if (product == null) {
       return Scaffold(
         backgroundColor: const Color(0xffF5F7FB),
-        appBar: AppBar(
-          title: const Text('Product Details'),
+        appBar:  AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color(0xffF4F6FA),
+          elevation: 0,
+          surfaceTintColor: const Color(0xffF4F6FA),
+          title: Row(mainAxisSize: MainAxisSize.min,
+            children: [
+                IconButton(
+                onPressed: () => Get.back(),
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Color(0xff2F2F2F),
+                ),
+              ),
+              Text(
+                'Product Details',
+                style: GoogleFonts.passeroOne(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xff2F2F2F),
+                ),
+              ),
+            ],
+          ),
+          centerTitle: false,
         ),
         body: Center(
           child: Column(
@@ -88,7 +111,7 @@ class ProductDetailScreen extends StatelessWidget {
                           Text(
                             product.title ?? 'No Title',
                             style: GoogleFonts.poppins(
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xff262626),
                               height: 1.35,
@@ -142,6 +165,7 @@ class ProductDetailScreen extends StatelessWidget {
                   'Product added successfully',
                   snackPosition: SnackPosition.TOP,
                   backgroundColor: AppColors.success,
+                  colorText: const Color(0xffF4F6FA),
                   margin: const EdgeInsets.all(12),
                 );
               },
@@ -155,10 +179,7 @@ class ProductDetailScreen extends StatelessWidget {
 
 class _TopImageSection extends StatelessWidget {
   final ProductModel product;
-
-  const _TopImageSection({
-    required this.product,
-  });
+  const _TopImageSection({required this.product });
 
   @override
   Widget build(BuildContext context) {
@@ -651,9 +672,7 @@ class _InfoRow extends StatelessWidget {
 class _DescriptionCard extends StatelessWidget {
   final String description;
 
-  const _DescriptionCard({
-    required this.description,
-  });
+  const _DescriptionCard({required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -764,49 +783,38 @@ class _BottomAddToCartBar extends StatelessWidget {
         top: false,
         child: Row(
           children: [
-            Expanded(
-              child: Container(
-                height: 62,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: const Color(0xffF7F8FB),
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Price',
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff6C6C6C),
-                      ),
+            Container(
+              width: 110,
+              height: 62,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: const Color(0xffF7F8FB),
+                borderRadius:  BorderRadius.circular(AppConstants.cardRadius(context)),
+              ),
+              child: Column(mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Price', style: GoogleFonts.poppins(fontSize: 12)),
+                  Text(
+                    '₹ ${price.toStringAsFixed(0)}',
+                    style: GoogleFonts.poppins(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      '₹ ${price.toStringAsFixed(0)}',
-                      style: GoogleFonts.poppins(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xff2F2F2F),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 12),
             Expanded(
-              flex: 3,
               child: CustomButton(
                 text: "Add to Cart",
                 icon: Icons.add_shopping_cart,
-                onPressed: onAddToCartTap
+                onPressed: onAddToCartTap,
               ),
             ),
           ],
-        ),
+        )
       ),
     );
   }

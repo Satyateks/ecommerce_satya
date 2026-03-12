@@ -23,24 +23,28 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xffF4F6FA),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xffF4F6FA),
         elevation: 0,
         surfaceTintColor: const Color(0xffF4F6FA),
-        leading: IconButton(
+        title: Row(mainAxisSize: MainAxisSize.min,
+          children: [
+          IconButton(
           onPressed: () => Get.back(),
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: Color(0xff2F2F2F),
-            size: 22,
           ),
         ),
-        title: Text(
-          'Cart',
-          style: GoogleFonts.passeroOne(
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            color: const Color(0xff2F2F2F),
-          ),
+            Text(
+              'Cart',
+              style: GoogleFonts.passeroOne(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xff2F2F2F),
+              ),
+            ),
+          ],
         ),
         centerTitle: false,
       ),
@@ -216,6 +220,7 @@ class CartScreen extends StatelessWidget {
                                       'Payment completed successfully',
                                       snackPosition: SnackPosition.TOP,
                                       margin: const EdgeInsets.all(12),
+                                      colorText: const Color(0xffF4F6FA),
                                       backgroundColor: AppColors.success
                                     );
                                   },
@@ -261,7 +266,7 @@ class _DeliveryAddressCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
       decoration: BoxDecoration(
         color:AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(AppConstants.screenPadding(context)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.04),
@@ -273,8 +278,7 @@ class _DeliveryAddressCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 42,
-            width: 42,
+            height: 40, width: 40,
             decoration: BoxDecoration(
               border: Border.all(
                 color:AppColors.primary,
@@ -484,13 +488,13 @@ class _BottomPaySection extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 20),
       decoration: BoxDecoration(
         color:AppColors.cardBackground,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(24),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppConstants.screenPadding(context)),
         ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.06),
-            blurRadius: 18,
+            blurRadius: 16,
             offset: const Offset(0, -6),
           ),
         ],
@@ -504,7 +508,7 @@ class _BottomPaySection extends StatelessWidget {
               textAlign: TextAlign.left,
               text: TextSpan(
                 style: GoogleFonts.poppins(
-                  fontSize: 11.5,
+                  fontSize: 9.5,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xff6B6B6B),
                 ),
@@ -513,7 +517,7 @@ class _BottomPaySection extends StatelessWidget {
                   TextSpan(
                     text: 'T&C',
                     style: TextStyle(
-                      color: Color(0xff3F7AE8),
+                      color: AppColors.primary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -521,7 +525,7 @@ class _BottomPaySection extends StatelessWidget {
                   TextSpan(
                     text: 'Privacy Policy',
                     style: TextStyle(
-                      color: Color(0xff3F7AE8),
+                      color: AppColors.primary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -540,7 +544,7 @@ class _BottomPaySection extends StatelessWidget {
                         Text(
                           'Payable amount',
                           style: GoogleFonts.poppins(
-                            fontSize: 13,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff666666),
                           ),
@@ -549,7 +553,7 @@ class _BottomPaySection extends StatelessWidget {
                         Text(
                           '₹${payableAmount.toStringAsFixed(0)}',
                           style: GoogleFonts.poppins(
-                            fontSize: 22,
+                            fontSize:18,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xff2F2F2F),
                           ),

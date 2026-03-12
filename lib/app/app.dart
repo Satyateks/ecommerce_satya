@@ -26,7 +26,7 @@ class App extends StatelessWidget {
           color: AppColors.cardBackground,
           elevation: 1,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppConstants.cardRadius),
+            borderRadius: BorderRadius.circular(AppConstants.cardRadius(context)),
           ),
         ),
       ),
