@@ -1,5 +1,4 @@
-import 'package:ecommerce_satya/screens/comingSoon_screen.dart';
-import 'package:ecommerce_satya/widgets/loading_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +10,7 @@ import '../controllers/cart_controller.dart';
 import '../controllers/product_controller.dart';
 import '../widgets/error_view.dart';
 import '../widgets/product_card.dart';
+import 'comingSoon_screen.dart';
 
 
 
@@ -136,9 +136,9 @@ class ProductListScreen extends StatelessWidget {
       elevation: 0,
       backgroundColor: const Color(0xffF5F7FB),
       title: Text(
-        "Shop",
-        style: GoogleFonts.poppins(
-          fontSize: 22,
+        "Product List",
+        style: GoogleFonts.passeroOne(
+          fontSize: 24,
           fontWeight: FontWeight.w700,
           color: const Color(0xff2F2F2F),
         ),

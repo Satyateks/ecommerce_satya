@@ -37,7 +37,7 @@ class CartScreen extends StatelessWidget {
         title: Text(
           'Cart',
           style: GoogleFonts.passeroOne(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.w600,
             color: const Color(0xff2F2F2F),
           ),
@@ -221,7 +221,7 @@ class CartScreen extends StatelessWidget {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     elevation: 0,
-                                    backgroundColor: AppColors.success,
+                                    backgroundColor: AppColors.primary,
                                     minimumSize: const Size.fromHeight(52),
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                                   ),

@@ -168,7 +168,7 @@ class CartItemTile extends StatelessWidget {
                       width: stepperWidth,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: const Color(0xff16B76A),
+                          color: AppColors.primary,
                           width: 1.4,
                         ),
                         borderRadius: BorderRadius.circular(16),

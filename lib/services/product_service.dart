@@ -17,7 +17,6 @@ class ProductService {
     try {
         debugPrint('.........fetchProducts API calling.........');
       final response = await _dio.get(AppConstants.productsEndpoint);
-        debugPrint('response .........$response');
       if (response.statusCode == 200) {
         debugPrint('.........${response.data}');
         final List data = response.data as List;
